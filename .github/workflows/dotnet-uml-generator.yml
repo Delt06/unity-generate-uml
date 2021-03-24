@@ -20,7 +20,7 @@ jobs:
       - run: dotnet tool restore
 
       - name: Remove old diagrams 
-        run: rm -r ./UML
+        run: rm -r ./UML || true
       - name: Generate PlantUML files
         run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation 
 
