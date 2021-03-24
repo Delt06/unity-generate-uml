@@ -1,0 +1,14 @@
+﻿name: Generate UML
+on:
+  push:
+    branches:
+      - master
+      - dev
+  workflow_dispatch:
+
+jobs:
+  generate-uml:
+    name: 'Generate UML'
+    runs-on: ubuntu-latest
+    steps:
+      uses: Delt06/dotnet-generate-uml@v1.0.0
