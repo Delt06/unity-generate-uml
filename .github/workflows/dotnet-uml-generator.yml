@@ -11,4 +11,4 @@ jobs:
     name: 'Generate UML'
     runs-on: ubuntu-latest
     steps:
-      uses: Delt06/dotnet-generate-uml@v1.0.0
+      - uses: Delt06/dotnet-generate-uml@v1.0.0
