@@ -12,11 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 5.0.x
-      - run: dotnet tool install --global PlantUmlClassDiagramGenerator --version 1.2.4
-      - run: dotnet tool restore
+      
 
       - name: Remove old diagrams 
         run: rm -r ./UML || true
@@ -25,6 +21,17 @@ jobs:
         run: |
           [ -d "./Assets/Scripts/" ] && echo "::set-output name=CODE_EXISTS::$('true')" || true
         id: check_for_code
+        
+      - uses: actions/setup-dotnet@v1
+        if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
+        with:
+          dotnet-version: 5.0.x
+      
+      - if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
+        run: dotnet tool install --global PlantUmlClassDiagramGenerator --version 1.2.4
+      - if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
+        run: dotnet tool restore
+        
       - name: Create a folder for diagrams
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
         run: mkdir ./UML
