@@ -4,5 +4,8 @@
 
 A GitHub action that generates UML diagrams for Unity C# code automatically.
 
-An example of output:  
+## Workflow file
+Can be found [here](.github/workflows/dotnet-uml-generator.yml).
+
+## Example of output
 ![Example Output](UML/include.svg)
