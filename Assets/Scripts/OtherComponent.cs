@@ -2,5 +2,5 @@
 
 public class OtherComponent : MonoBehaviour
 {
-	public Component Component;
+	public ExampleComponent ExampleComponent;
 }
