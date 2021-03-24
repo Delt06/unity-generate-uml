@@ -1,9 +1,9 @@
 @startuml
+class ExampleComponent {
+}
+MonoBehaviour <|-- ExampleComponent
 class OtherComponent {
 }
 MonoBehaviour <|-- OtherComponent
-OtherComponent --> "Component" Component
-class Component {
-}
-MonoBehaviour <|-- Component
+OtherComponent --> "ExampleComponent" ExampleComponent
 @enduml

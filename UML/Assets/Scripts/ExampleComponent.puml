@@ -1,0 +1,5 @@
+@startuml
+class ExampleComponent {
+}
+MonoBehaviour <|-- ExampleComponent
+@enduml
