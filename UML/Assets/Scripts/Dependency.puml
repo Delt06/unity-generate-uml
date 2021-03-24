@@ -1,4 +1,0 @@
-@startuml
-class Dependency {
-}
-@enduml
