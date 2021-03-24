@@ -3,7 +3,4 @@ class OtherComponent {
 }
 MonoBehaviour <|-- OtherComponent
 OtherComponent --> "Component" Component
-class Component {
-}
-MonoBehaviour <|-- Component
 @enduml
