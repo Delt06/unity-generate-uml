@@ -12,8 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      
-
       - name: Remove old diagrams 
         run: rm -r ./UML || true
         
