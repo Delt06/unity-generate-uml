@@ -26,19 +26,19 @@ jobs:
           [ -d "./Assets/Scripts/" ] && echo "::set-output name=CODE_EXISTS::$('true')"
         id: check_for_code
       - name: Create a folder for diagrams
-        if: $"{{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}"
+        if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
         run: mkdir ./UML
       - name: Generate PlantUML files
-        if: $"{{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}"
+        if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
         run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation -allInOne
         
       - name: Get File names
-        if: $"{{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}"
+        if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
         run: |
           echo "::set-output name=UML_FILES::$(find ./UML -name "*.puml" | tr '\n' ' ')"
         id: get_file_names
       - name: Generate SVG Diagrams
-        if: $"{{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}"
+        if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
         uses: cloudbees/plantuml-github-action@master
         with:
           args: -v -tsvg ${{ steps.get_file_names.outputs.UML_FILES }}
