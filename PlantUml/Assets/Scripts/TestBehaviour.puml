@@ -1,0 +1,5 @@
+@startuml
+class TestBehaviour {
+}
+MonoBehaviour <|-- TestBehaviour
+@enduml
