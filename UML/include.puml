@@ -1,6 +1,7 @@
 @startuml
 class Dependency {
 }
+MonoBehaviour <|-- Dependency
 class TestBehaviour {
 }
 MonoBehaviour <|-- TestBehaviour
