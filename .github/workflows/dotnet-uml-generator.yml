@@ -11,4 +11,15 @@ jobs:
     name: 'Generate UML'
     runs-on: ubuntu-latest
     steps:
-      - uses: Delt06/dotnet-generate-uml@v1.0.0
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+      - run: dotnet tool install --global PlantUmlClassDiagramGenerator
+      - run: dotnet tool restore
+      - run: puml-gen . -public
+      - uses: EndBug/add-and-commit@v7.0.0
+        with:
+          author_name: 'UML Bot'
+          message: 'Generate UML (${{ github.workflow }})'
+          author_email: 41898282+uml-bot[bot]@users.noreply.github.com
