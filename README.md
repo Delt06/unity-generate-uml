@@ -1,6 +1,6 @@
 # Unity Generate UML
 
-[![Generate UML](https://github.com/Delt06/unity-generate-uml/actions/workflows/dotnet-uml-generator.yml/badge.svg)](https://github.com/Delt06/unity-generate-uml/actions/workflows/dotnet-uml-generator.yml)
+[![Generate UML](https://github.com/Delt06/unity-generate-uml/actions/workflows/unity-generate-uml.yml/badge.svg)](https://github.com/Delt06/unity-generate-uml/actions/workflows/unity-generate-uml.yml)
 
 A GitHub action that generates UML diagrams for Unity C# code automatically.
 
