@@ -24,10 +24,14 @@ jobs:
       - name: Generate PlantUML files
         run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation -allInOne
         
+      - name: Get File names
+        run: |
+          echo "::set-output name=UML_FILES::$(find /UML -name "*.puml")"
+        id: file_names
       - name: Generate SVG Diagrams
         uses: cloudbees/plantuml-github-action@master
         with:
-          args: -v -tsvg ${{ find /UML -name "*.puml" }}
+          args: -v -tsvg ${{ steps.file_names.UML_FILES }}
 
       - uses: EndBug/add-and-commit@v7.0.0
         with:
