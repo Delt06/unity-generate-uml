@@ -20,13 +20,15 @@ jobs:
       - run: dotnet tool restore
 
       - name: Remove old diagrams 
-        run: rm -r ./UML || true
+        run: rm -r ./UML || true 
+      - name: Create a folder for diagrams
+        run: mkdir ./UML
       - name: Generate PlantUML files
         run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation -allInOne
         
       - name: Get File names
         run: |
-          echo "::set-output name=UML_FILES::$(find /UML -name "*.puml")"
+          echo "::set-output name=UML_FILES::$(find ./UML -name "*.puml")"
         id: file_names
       - name: Generate SVG Diagrams
         uses: cloudbees/plantuml-github-action@master
