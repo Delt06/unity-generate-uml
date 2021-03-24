@@ -28,7 +28,7 @@ jobs:
         
       - name: Get File names
         run: |
-          echo "::set-output name=UML_FILES::$(find ./UML -name "*.puml")"
+          echo "::set-output name=UML_FILES::$(find ./UML -name "*.puml" | tr '\n' ' ')"
         id: get_file_names
       - name: Generate SVG Diagrams
         uses: cloudbees/plantuml-github-action@master
