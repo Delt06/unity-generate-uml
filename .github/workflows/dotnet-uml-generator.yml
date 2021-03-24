@@ -17,7 +17,7 @@ jobs:
           dotnet-version: 5.0.x
       - run: dotnet tool install --global PlantUmlClassDiagramGenerator --version 1.2.4
       - run: dotnet tool restore
-      - run: puml-gen . -public
+      - run: puml-gen . ./PlantUml -dir -public
       - uses: EndBug/add-and-commit@v7.0.0
         with:
           author_name: 'UML Bot'
