@@ -23,7 +23,7 @@ jobs:
         
       - name: Check if there is code
         run: |
-          [ -d "./Assets/Scripts/" ] && echo "::set-output name=CODE_EXISTS::$('true')"
+          [ -d "./Assets/Scripts/" ] && echo "::set-output name=CODE_EXISTS::$('true')" || true
         id: check_for_code
       - name: Create a folder for diagrams
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
