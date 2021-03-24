@@ -12,6 +12,7 @@ jobs:
     env:
       CODE_PATH: "./Assets/Scripts/"
       UML_OUTPUT_PATH: "./UML/"
+      UMP_GENERATION_PARAMETERS: -public -createAssociation -allInOne
     steps:
       - uses: actions/checkout@v2
 
@@ -38,7 +39,7 @@ jobs:
         run: mkdir ${{ env.UML_OUTPUT_PATH }}
       - name: Generate PlantUML files
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
-        run: puml-gen ${{ env.CODE_PATH }} ${{ env.UML_OUTPUT_PATH }} -dir -public -createAssociation -allInOne
+        run: puml-gen ${{ env.CODE_PATH }} ${{ env.UML_OUTPUT_PATH }} -dir ${{ env.UMP_GENERATION_PARAMETERS }}
         
       - name: Get File names
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
