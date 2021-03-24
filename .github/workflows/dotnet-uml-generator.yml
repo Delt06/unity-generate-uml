@@ -9,15 +9,18 @@ jobs:
   generate-uml:
     name: 'Generate UML'
     runs-on: ubuntu-latest
+    env:
+      CODE_PATH: "./Assets/Scripts/"
+      UML_OUTPUT_PATH: "./UML/"
     steps:
       - uses: actions/checkout@v2
 
       - name: Remove old diagrams 
-        run: rm -r ./UML || true
+        run: rm -r ${{ env.UML_OUTPUT_PATH }} || true
         
       - name: Check if there is code
         run: |
-          [ -d "./Assets/Scripts/" ] && echo "::set-output name=CODE_EXISTS::true" || true
+          [ -d ${{ env.CODE_PATH }} ] && echo "::set-output name=CODE_EXISTS::true" || true
         id: check_for_code
         
       - uses: actions/setup-dotnet@v1
@@ -32,15 +35,15 @@ jobs:
         
       - name: Create a folder for diagrams
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
-        run: mkdir ./UML
+        run: mkdir ${{ env.UML_OUTPUT_PATH }}
       - name: Generate PlantUML files
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
-        run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation -allInOne
+        run: puml-gen ${{ env.CODE_PATH }} ${{ env.UML_OUTPUT_PATH }} -dir -public -createAssociation -allInOne
         
       - name: Get File names
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
         run: |
-          echo "::set-output name=UML_FILES::$(find ./UML -name "*.puml" | tr '\n' ' ')"
+          echo "::set-output name=UML_FILES::$(find ${{ env.UML_OUTPUT_PATH }} -name "*.puml" | tr '\n' ' ')"
         id: get_file_names
       - name: Generate SVG Diagrams
         if: ${{ steps.check_for_code.outputs.CODE_EXISTS == 'true' }}
