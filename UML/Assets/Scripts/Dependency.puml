@@ -1,5 +1,0 @@
-@startuml
-class Dependency {
-}
-MonoBehaviour <|-- Dependency
-@enduml
