@@ -1,3 +1,4 @@
 @startuml
+!include ././Assets/Scripts/Dependency.puml
 !include ././Assets/Scripts/TestBehaviour.puml
 @enduml
