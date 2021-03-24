@@ -1,6 +1,0 @@
-@startuml
-class TestBehaviour {
-}
-MonoBehaviour <|-- TestBehaviour
-TestBehaviour o-> "Dependency" Dependency
-@enduml
