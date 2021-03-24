@@ -10,6 +10,8 @@ jobs:
   generate-uml:
     name: 'Generate UML'
     runs-on: ubuntu-latest
+    env:
+      UML_FILES: ".puml"
     steps:
       - uses: actions/checkout@v2
 
@@ -22,7 +24,7 @@ jobs:
       - name: Remove old diagrams 
         run: rm -r ./UML || true
       - name: Generate PlantUML files
-        run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation 
+        run: puml-gen ./Assets/Scripts/ ./UML -dir -public -createAssociation -allInOne
 
       - name: Get changed UML files
         id: getfile
